@@ -1,11 +1,14 @@
 package com.ds.Auth;
 
 import java.security.SecureRandom;
+import java.security.spec.KeySpec;
 import java.util.Arrays;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
@@ -20,13 +23,18 @@ public class AES_encryption {
     public byte[] encrypt(String plainpassword, byte[] salt) {
         byte[] cipherBytes = null;
         try {
-            Cipher ci = Cipher.getInstance("AES/GCM/NoPadding");
-            SecretKey keySpec = new SecretKeySpec(key.getBytes(), "AES");
+            //We use the PBKDF2WithHmacSHA256 algorithm 
+            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+            KeySpec spec = new PBEKeySpec(key.toCharArray(), salt, 65536, 256);
+            SecretKey tmpKey = factory.generateSecret(spec);
 
+            SecretKeySpec keySpec = new SecretKeySpec(tmpKey.getEncoded(), "AES");
+            
             // GCMParameterSpec
             GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(128, salt);
-
+            
             // Init the Cipher with ENCRYPT_MODE
+            Cipher ci = Cipher.getInstance("AES/GCM/NoPadding");
             ci.init(Cipher.ENCRYPT_MODE, keySpec, gcmParameterSpec);
 
             cipherBytes = ci.doFinal(plainpassword.getBytes());
