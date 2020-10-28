@@ -3,6 +3,7 @@ package com.ds.Auth;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -53,5 +54,23 @@ public class AES_encryption {
     public boolean validatePassword(String pass, byte[] salt, byte[] encryptedPass) {
         byte[] validatePassword = encrypt(pass, salt);
         return Arrays.equals(validatePassword, encryptedPass);
+    }
+
+    public void Auth(String u, String p, List<User> users) {
+        boolean isloggedin = false;
+        System.err.println("Function requested by: " + u);
+        for(User user: users) {
+            if(u.equals(user.getUsername())){
+                if(validatePassword(p, user.getSalt(), user.getEncryptedPassword())) {
+                    isloggedin = true;
+                } else {
+                    isloggedin = false;
+                }
+            } 
+        }
+        if(!isloggedin) {
+            System.err.println("User could not login: " + u); 
+            throw new SecurityException("Not authorized");
+        }
     }
 }

@@ -81,6 +81,10 @@ public class UserFile {
         tempUserList.add(new User("Bob","bo123"));
         tempUserList.add(new User("Connie","co123"));
         tempUserList.add(new User("Ahmed","Durum123"));
+        tempUserList.add(new User("Admin","admin1234"));
+        tempUserList.add(new User("Johnny","FitnessIsMyPassion2020"));
+        tempUserList.add(new User("Jonathan","ViSesDrenge#PH"));
+        tempUserList.add(new User("John","Doe#¤%&92kjGH03"));
         return tempUserList;
     } 
 

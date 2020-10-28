@@ -17,10 +17,12 @@ public class ClientOps {
     public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException {
             boolean isloggedin = false;
             server = (RMIInterface) Naming.lookup("//localhost:2020/PrintServer");
+            String username = "";
+            String pass = "";
 
             while(!isloggedin) {
-                String username = JOptionPane.showInputDialog("Username");
-                String pass = JOptionPane.showInputDialog("Password");
+                username = JOptionPane.showInputDialog("Username");
+                pass = JOptionPane.showInputDialog("Password");
                 isloggedin = server.auth(username, pass);
                 if(!isloggedin) {
                     JOptionPane.showMessageDialog(null, "Invalid credentials, try again! ");
@@ -35,7 +37,7 @@ public class ClientOps {
                         String printer = JOptionPane.showInputDialog("Printer (p1, p2, p3)?");
                         String filename = JOptionPane.showInputDialog("filename?");
                         try {
-                        String response = server.print(filename, printer);
+                        String response = server.print(filename, printer, username, pass);
                         JOptionPane.showMessageDialog(null, response);
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, e);
@@ -44,7 +46,7 @@ public class ClientOps {
                     case "2":
                         printer = JOptionPane.showInputDialog("Printer (p1, p2, p3)?");
                         try {
-                        String response = server.queue(printer);
+                        String response = server.queue(printer, username, pass);
                         JOptionPane.showMessageDialog(null, response);
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, e);
@@ -54,7 +56,7 @@ public class ClientOps {
                         printer = JOptionPane.showInputDialog("Printer (p1, p2, p3)?");
                         int job = Integer.parseInt(JOptionPane.showInputDialog("job number?"));
                         try {
-                        boolean r3 = server.topQueue(printer, job);
+                        boolean r3 = server.topQueue(printer, job, username, pass);
                         JOptionPane.showMessageDialog(null, r3);
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, e);
@@ -62,7 +64,7 @@ public class ClientOps {
                         break;
                     case "4":
                         try {
-                        server.start();
+                        server.start(username, pass);
                         JOptionPane.showMessageDialog(null, "Server started");
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, e);
@@ -70,7 +72,7 @@ public class ClientOps {
                         break;
                     case "5":
                         try {
-                        server.stop();
+                        server.stop(username, pass);
                         JOptionPane.showMessageDialog(null, "Server stopped");
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, e);
@@ -78,7 +80,7 @@ public class ClientOps {
                         break;
                     case "6":
                         try {
-                        server.restart();
+                        server.restart(username, pass);
                         JOptionPane.showMessageDialog(null, "Server restarted");
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, e);
@@ -87,7 +89,7 @@ public class ClientOps {
                     case "7":
                         try {
                         printer = JOptionPane.showInputDialog("Printer (p1, p2, p3)?");
-                        String response = server.status(printer);
+                        String response = server.status(printer, username, pass);
                         JOptionPane.showMessageDialog(null, response);
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, e);
@@ -95,7 +97,7 @@ public class ClientOps {
                         break;
                     case "8":
                         try {
-                        String r8 = server.readConfig("param");
+                        String r8 = server.readConfig("param", username, pass);
                         JOptionPane.showMessageDialog(null, r8);
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, e);
@@ -103,7 +105,7 @@ public class ClientOps {
                         break;
                     case "9":
                          try {
-                        server.setConfig("param", "bruh");
+                        server.setConfig("param", "bruh", username, pass);
                         JOptionPane.showMessageDialog(null, "Config updated");
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, e);
