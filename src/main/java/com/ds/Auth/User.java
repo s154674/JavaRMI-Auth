@@ -9,7 +9,6 @@ public class User implements Serializable{
     private String username = null;
     private byte[] encryptedPassword = null;
     private byte[] salt = null;
-    private String role = null;
 
     public User(String name, String pass){
 
@@ -32,7 +31,5 @@ public class User implements Serializable{
     public byte[] getSalt() {
         return salt;
     }
-
-    public String getRole() { return role; }
 
 }
