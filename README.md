@@ -1,9 +1,9 @@
 # Java Authentication RMI
-**Authors** Andreas Soelberg - s165206, Johan Hagelskjær Sjursen - s154674, Jia Hao Johnny Chen - s165543Jonathan Yngve Friis - s165213
+**Authors** Andreas Soelberg - s165206, Johan Hagelskjær Sjursen - s154674, Jia Hao Johnny Chen - s165543, Jonathan Yngve Friis - s165213
 
 This application is develop as part of the DTU course 02239 Data Security Autumn 2020
 
-prerequisite:
+Prerequisite:
 - JAVA JDK 15
 - JAVA compatible IDE e.g. Visual studiio code
 
