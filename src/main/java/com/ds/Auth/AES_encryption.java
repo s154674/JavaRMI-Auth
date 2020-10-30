@@ -28,7 +28,7 @@ public class AES_encryption {
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
             KeySpec spec = new PBEKeySpec(key.toCharArray(), salt, 65536, 256);
             SecretKey tmpKey = factory.generateSecret(spec);
-
+            System.out.println(tmpKey);
             SecretKeySpec keySpec = new SecretKeySpec(tmpKey.getEncoded(), "AES");
             
             // GCMParameterSpec

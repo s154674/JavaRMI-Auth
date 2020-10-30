@@ -1,4 +1,8 @@
-C:\Users\Andreas\Desktop\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\InterfaceRmiServer\RMIInterface.java
-C:\Users\Andreas\Desktop\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\rmiproject\App.java
-C:\Users\Andreas\Desktop\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\RMIServer\ServerOps.java
-C:\Users\Andreas\Desktop\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\RMIClient\ClientOps.java
+C:\Users\Andreas\Documents\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\Auth\User.java
+C:\Users\Andreas\Documents\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\RMIServer\Printer.java
+C:\Users\Andreas\Documents\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\RMIServer\UserFile.java
+C:\Users\Andreas\Documents\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\Auth\AES_encryption.java
+C:\Users\Andreas\Documents\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\rmiproject\App.java
+C:\Users\Andreas\Documents\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\InterfaceRmiServer\RMIInterface.java
+C:\Users\Andreas\Documents\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\RMIClient\ClientOps.java
+C:\Users\Andreas\Documents\JavaProject\DataSecurity\rmiproject\src\main\java\com\ds\RMIServer\ServerOps.java
